@@ -9,14 +9,33 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import plotly.express as px
 import streamlit.components.v1 as components
+import datetime as dt
+import random
 
 def app():
     """Writes content to the app"""
     st.sidebar.title("نقاط البيع لكل قطاع")
 
-
     sectors_df = pd.read_csv('/Users/turki/Desktop/SaudiPointOfSales-staging/output/sectors_df.csv', encoding="utf8")
 
+    # resample weekly data to monthly 
+    years_months_values = [(d['Start Date'].year, d['Start Date'].month) for d in sectors_df.index]
+    year, month = years_months_values[0]
+    date_value = st.empty()
+    month_slider = st.empty()
+    def render_slider(year, month):
+
+        month_value = month_slider.slider(
+            "",
+            min_value=0,
+            max_value=len(years_months_values),
+            value=years_months_values.index((year, month)),
+            format="",
+        )
+        year, month = years_months_values[month_value]
+        d = date(year, month, 1)
+        date_value.subheader(f"Month: {d:%Y}-{d:%m}")
+        return year, month
 
     # Bar chart city 
     sectors_df = sectors_df.sort_values('Value of Transactions')

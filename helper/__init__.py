@@ -79,3 +79,38 @@ def sectors(df):
 def to_int(df,x):
     df[x] = df[x].replace(',','', regex=True)
     df[x] = df[x].astype(int)
+
+
+# pars date 
+def fix_date(df):
+    df["Start Date"]= df['Date'].str.split("-", n = 1, expand = True)[0]
+    df['Start Date'] = [pd.to_datetime(x) for x in df['Start Date']]
+    df["End Date"]= df['Date'].str.split("-", n = 1, expand = True)[1]
+    df['End Date'] = [pd.to_datetime(x) for x in df['End Date']]
+    df['Week Number'] = df['Start Date'].dt.week
+    del df["Date"]
+
+
+
+
+def df_filter(message,df):
+
+    slider_1, slider_2 = st.slider('%s' % (message),0,len(df)-1,[0,len(df)-1],1)
+
+    while len(str(df.iloc[slider_1][1]).replace('.0','')) < 4:
+        df.iloc[slider_1,1] = '0' + str(df.iloc[slider_1][1]).replace('.0','')
+        
+    while len(str(df.iloc[slider_2][1]).replace('.0','')) < 4:
+        df.iloc[slider_2,1] = '0' + str(df.iloc[slider_1][1]).replace('.0','')
+
+    start_date = datetime.datetime.strptime(str(df.iloc[slider_1][0]).replace('.0','') + str(df.iloc[slider_1][1]).replace('.0',''),'%Y%m%d%H%M%S')
+    start_date = start_date.strftime('%d %b %Y, %I:%M%p')
+    
+    end_date = datetime.datetime.strptime(str(df.iloc[slider_2][0]).replace('.0','') + str(df.iloc[slider_2][1]).replace('.0',''),'%Y%m%d%H%M%S')
+    end_date = end_date.strftime('%d %b %Y, %I:%M%p')
+
+    st.info('Start: **%s** End: **%s**' % (start_date,end_date))
+    
+    filtered_df = df.iloc[slider_1:slider_2+1][:].reset_index(drop=True)
+
+    return filtered_df
