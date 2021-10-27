@@ -4,38 +4,31 @@ import streamlit as st
 
 import streamlit.components.v1 as components
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 import plotly.io as pio
 import plotly.express as px
-import streamlit.components.v1 as components
 import datetime as dt
-import random
 
 def app():
     """Writes content to the app"""
     st.sidebar.title("نقاط البيع لكل قطاع")
 
-    sectors_df = pd.read_csv('/Users/turki/Desktop/SaudiPointOfSales-staging/output/sectors_df.csv', encoding="utf8")
+    sectors_df = pd.read_csv('./output/sectors_df.csv', encoding="utf8")
 
     # resample weekly data to monthly 
-    years_months_values = [(d['Start Date'].year, d['Start Date'].month) for d in sectors_df.index]
-    year, month = years_months_values[0]
-    date_value = st.empty()
-    month_slider = st.empty()
-    def render_slider(year, month):
-
-        month_value = month_slider.slider(
-            "",
-            min_value=0,
-            max_value=len(years_months_values),
-            value=years_months_values.index((year, month)),
-            format="",
-        )
-        year, month = years_months_values[month_value]
-        d = date(year, month, 1)
-        date_value.subheader(f"Month: {d:%Y}-{d:%m}")
-        return year, month
+    try:
+        start_date, end_date = st.date_input('اختر الفترة :', [])
+        if start_date < end_date:
+            pass
+        else:
+            st.error('للاسف لا يوجد بيانات كافية لهذه الفترة.')
+        ## Sanity check
+        sectors_df['Start Date']= pd.to_datetime(sectors_df['Start Date']).dt.date
+        #greater than the start date and smaller than the end date
+        mask = (sectors_df['Start Date'] > start_date) & (sectors_df['Start Date'] <= end_date)
+        sectors_df = sectors_df.loc[mask]
+    except:
+        pass
 
     # Bar chart city 
     sectors_df = sectors_df.sort_values('Value of Transactions')
