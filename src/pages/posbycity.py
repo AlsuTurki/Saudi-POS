@@ -14,24 +14,32 @@ def app():
     """Writes content to the app"""
     st.write("نقاط البيع لكل مدينة")
 
-    Grouped_City = pd.read_csv('/Users/turki/Desktop/SaudiPointOfSales-staging/output/Grouped_City.csv', encoding="utf8")
+    cities_df = pd.read_csv('./output/full_cities_df.csv', encoding="utf8")
+
+    ## Range selector
+    try:
+        start_date, end_date = st.date_input('اختر الفترة :', [])
+        if start_date < end_date:
+            pass
+        else:
+            st.error('للاسف لا يوجد بيانات كافية لهذه الفترة.')
+        ## Sanity check
+        cities_df['Start Date']= pd.to_datetime(cities_df['Start Date']).dt.date
+        #greater than the start date and smaller than the end date
+        mask = (cities_df['Start Date'] > start_date) & (cities_df['Start Date'] <= end_date)
+        cities_df = cities_df.loc[mask]
+
+    except:
+        pass
     #map 
     px.set_mapbox_access_token('pk.eyJ1IjoiYWxzdXR1cmtpIiwiYSI6ImNrdjUzOXM4cTAzZmIydnBqMWh1cms0a2MifQ.HDRkBwCGJl3wMaWzsyMtDQ')
-    fig = px.scatter_mapbox(Grouped_City, lat="location_latitude", lon="location_longitude",
-                        hover_name='English_City',
+    fig = px.scatter_mapbox(cities_df, lat="location_latitude", lon="location_longitude",
+                        hover_name='Arabic_City',
                         color="Value of Transactions", 
                         size="Value of Transactions", zoom=4,
-                        #text = Grouped_City['text'],
                   color_continuous_scale= px.colors.sequential.Blugrn, size_max=30)
     st.plotly_chart(fig)
  
-
-    cities_df = pd.read_csv('/Users/turki/Desktop/SaudiPointOfSales-staging/output/cities_df.csv', encoding="utf8")
-    #convert_df to csv
-    @st.cache
-    def convert_df(df):
-        return df.to_csv().encode('utf-8')
-
   
 
 
@@ -143,7 +151,10 @@ def app():
     components.html(HtmlFile.read(),height=600, scrolling=True)
 
 
-
+    #convert_df to csv
+    @st.cache
+    def convert_df(df):
+        return df.to_csv().encode('utf-8')
 
 
     csv = convert_df(cities_df)

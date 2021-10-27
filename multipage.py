@@ -48,8 +48,6 @@ class MultiPage:
         st.sidebar.title("About me")
         st.sidebar.info(
             """
-            This app is maintained by Turki Alsughayyir. You can learn more about me
-            [here](https://pos-sa/aboutme).""")
-        st.sidebar.text("Built with  ❤️ Streamlit")
+            This app is maintained by Turki Alsughayyir. You can learn more in about me page""")
         # run the app function     
         page['function']()

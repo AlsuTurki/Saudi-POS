@@ -7,7 +7,7 @@ from src.pages import home, about, posbycity, posbysector, aboutme
 app = MultiPage()
 
 # Title of the main page
-st.title("لوحة معلومات نقاط البيع السعودية")
+#st.title("لوحة معلومات نقاط البيع السعودية")
 
 # Add all your applications (pages) here
 app.add_page("الصفحة الرئيسة", home.app)
