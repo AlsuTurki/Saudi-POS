@@ -10,5 +10,10 @@ def read_markdown_file(markdown_file):
 # pylint: disable=line-too-long
 def app():
     """Used to write the page in the app.py file"""
-    intro_markdown = read_markdown_file("/Users/turki/Desktop/SaudiPointOfSales-staging/ABOUT.md")
+    hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+    intro_markdown = read_markdown_file('./ABOUT.md')
     st.markdown(intro_markdown, unsafe_allow_html=True,)

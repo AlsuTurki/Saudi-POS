@@ -12,7 +12,21 @@ import datetime
 
 def app():
     """Writes content to the app"""
-    st.write("نقاط البيع لكل مدينة")
+    hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+    st.markdown(hide_menu_style, unsafe_allow_html=True)
+    title = """
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
+    <style> bdi {font-family: 'IBM Plex Sans Arabic';}
+    div { direction: RTL;}
+    .css-hi6a2p {padding-top: 0rem;}
+    </style>
+    <div><h2><bdi>نقاط البيع لكل مدينة</bdi></h2></div>
+    """
+    st.write(title , unsafe_allow_html=True, )
 
     cities_df = pd.read_csv('./output/full_cities_df.csv', encoding="utf8")
 
@@ -48,7 +62,7 @@ def app():
     # Number of Transactions by city 
     cities_df = cities_df.sort_values('Number of Transactions')
 
-    aggs = ["count","sum","avg","median","mode","rms","stddev","min","max","first","last"]
+    aggs = ["count","sum","avg","median","mode","rms","stddev"]
 
     agg = []
     agg_func = []
@@ -93,15 +107,15 @@ def app():
     )
 
     fig_dict = dict(data=data, layout=layout)
-    pio.write_html(fig_dict, file = '/Users/turki/Desktop/SaudiPointOfSales-staging/html_files/numoftrans_cities_df_bar.html', validate=False)
-    HtmlFile = open(f'/Users/turki/Desktop/SaudiPointOfSales-staging/html_files/numoftrans_cities_df_bar.html','r',encoding='utf-8')
+    pio.write_html(fig_dict, file = './html_files/numoftrans_cities_df_bar.html', validate=False)
+    HtmlFile = open(f'./html_files/numoftrans_cities_df_bar.html','r',encoding='utf-8')
     components.html(HtmlFile.read(),height=600, scrolling=True)
 
 
     # Value of Transactions by city 
     cities_df = cities_df.sort_values('Value of Transactions')
 
-    aggs = ["count","sum","avg","median","mode","rms","stddev","min","max","first","last"]
+    aggs = ["count","sum","avg","median","mode","rms","stddev"]
 
     agg = []
     agg_func = []
@@ -146,8 +160,8 @@ def app():
     )
 
     fig_dict = dict(data=data, layout=layout)
-    pio.write_html(fig_dict, file = '/Users/turki/Desktop/SaudiPointOfSales-staging/html_files/cities_df_bar.html', validate=False)
-    HtmlFile = open(f'/Users/turki/Desktop/SaudiPointOfSales-staging/html_files/cities_df_bar.html','r',encoding='utf-8')
+    pio.write_html(fig_dict, file = './html_files/cities_df_bar.html', validate=False)
+    HtmlFile = open('./html_files/cities_df_bar.html','r',encoding='utf-8')
     components.html(HtmlFile.read(),height=600, scrolling=True)
 
 
@@ -164,7 +178,7 @@ def app():
         st.subheader('البيانات الخام')
         st.write(cities_df)
         st.download_button(
-        label="CSV حمل البيانات كـ",
+        label=" حمل البيانات كـCSV",
         data=csv,
         file_name='pos-sectors-data.csv',
         mime='text/csv',)

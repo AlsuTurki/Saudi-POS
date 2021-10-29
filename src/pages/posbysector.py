@@ -11,7 +11,21 @@ import datetime as dt
 
 def app():
     """Writes content to the app"""
-    st.sidebar.title("نقاط البيع لكل قطاع")
+    hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+    st.markdown(hide_menu_style, unsafe_allow_html=True)    
+    title = """
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
+    <style> bdi {font-family: 'IBM Plex Sans Arabic';}
+    div { direction: RTL;
+    .css-hi6a2p {padding-top: 0rem;}
+    </style>
+    <div><h2><bdi>نقاط البيع لكل قطاع</bdi></h2></div>
+    """
+    st.write(title , unsafe_allow_html=True, )
 
     sectors_df = pd.read_csv('./output/sectors_df.csv', encoding="utf8")
 
@@ -30,10 +44,64 @@ def app():
     except:
         pass
 
-    # Bar chart city 
+
+    # Number of Transactions by city 
+    sectors_df = sectors_df.sort_values('Number of Transactions')
+
+    aggs = ["count","sum","avg","median","mode","rms","stddev"]
+
+    agg = []
+    agg_func = []
+    for i in range(0, len(aggs)):
+        agg = dict(
+            args=['transforms[0].aggregations[0].func', aggs[i]],
+            label=aggs[i],
+            method='restyle'
+        )
+        agg_func.append(agg)
+
+
+    data = [dict(
+    type = 'bar',
+    x = sectors_df['Arabic_Sector'],
+    y = sectors_df['Number of Transactions'],
+    mode = 'markers',
+    marker = dict(color = 'rgb(40, 66, 153)'),
+    transforms = [dict(
+        type = 'aggregate',
+        aggregations = [dict(
+            target = 'y', func = 'sum', enabled = True)
+        ]
+    )]
+    )]
+
+    layout = dict(
+    title = 'عدد العمليات لكل قطاع',
+    xaxis = dict(title = 'القطاع'),
+    yaxis = dict(title = 'عدد العمليات'),
+    hovermode="x",
+    updatemenus = [dict(
+            x = 0.85,
+            y = 1.15,
+            xref = 'paper',
+            yref = 'paper',
+            yanchor = 'top',
+            active = 1,
+            showactive = False,
+            buttons = agg_func
+    )]
+    )
+
+    fig_dict = dict(data=data, layout=layout)
+    pio.write_html(fig_dict, file = './html_files/numoftrans_cities_df_bar.html', validate=False)
+    HtmlFile = open(f'./html_files/numoftrans_cities_df_bar.html','r',encoding='utf-8')
+    components.html(HtmlFile.read(),height=600, scrolling=True)
+
+
+    # value of transaction by sector   
     sectors_df = sectors_df.sort_values('Value of Transactions')
 
-    aggs = ["count","sum","avg","median","mode","rms","stddev","min","max","first","last"]
+    aggs = ["count","sum","avg","median","mode","rms","stddev"]
 
     agg = []
     agg_func = []
@@ -64,6 +132,7 @@ def app():
     title = 'قيمة العمليات لكل قطاع',
     xaxis = dict(title = 'القطاع'),
     yaxis = dict(title = 'قيمة العمليات'),
+    hovermode="x",
     updatemenus = [dict(
             x = 0.85,
             y = 1.15,
@@ -94,7 +163,7 @@ def app():
         st.subheader('البيانات الخام')
         st.write(sectors_df)
         st.download_button(
-        label="CSV حمل البيانات كـ",
+        label=" حمل البيانات كـCSV",
         data=csv,
         file_name='pos-sectors-data.csv',
         mime='text/csv',)
