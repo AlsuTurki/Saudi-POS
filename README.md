@@ -69,5 +69,3 @@ You can find all raw data in **output** folder, and below the breack down:
     - helper csv files for processing longitude & latitude (data pipline will be optimazed later on and the files we be no longer with us :( 
 
 ### project file structure
-
-
