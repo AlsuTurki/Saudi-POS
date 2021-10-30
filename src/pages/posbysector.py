@@ -28,6 +28,7 @@ def app():
     st.write(title , unsafe_allow_html=True, )
 
     sectors_df = pd.read_csv('./output/sectors_df.csv', encoding="utf8")
+    historcal_sectors_df = pd.read_csv('./output/hist_pos.csv')
 
     # resample weekly data to monthly 
     try:
@@ -149,6 +150,8 @@ def app():
     pio.write_html(fig_dict, file = 'html_files/sectors_df_bar.html', validate=False)
     HtmlFile = open(f'html_files/sectors_df_bar.html','r',encoding='utf-8')
     components.html(HtmlFile.read(),height=600, scrolling=True)
+
+
 
 
     #convert_df to csv
