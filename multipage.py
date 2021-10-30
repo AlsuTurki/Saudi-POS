@@ -45,9 +45,8 @@ class MultiPage:
             "[pull requests](https://github.com/AlsuTurki/SaudiPointOfSales/pulls) "
             "to the [source code](https://github.com/AlsuTurki/SaudiPointOfSales). ")
             
-        st.sidebar.title("About me")
         st.sidebar.info(
             """
-            This app is maintained by Turki Alsughayyir. You can learn more in about me page""")
+            This app is maintained by Turki Alsughayyir.""")
         # run the app function     
         page['function']()
