@@ -4,7 +4,7 @@
 Author: Turki A. Alsughayyir
 ```
 
-### About the project 
+## About the project 
 This project aime to collect and visualize the weekly saudi Arabia Points of Sale Transactions report. Since 2016 each week Sama is publishing a weekly POS transaction report as pdf file containing two tables
   - Table one: Number/Value of transaction by a sector.
   - Table Two: Number/Value of transaction by city.
@@ -17,7 +17,7 @@ as alternative solution I did found a monthly historcal data from 2016 to 2021 i
 
 
 
-### Technologies used
+## Technologies used
 - Python 3
   - web scraping (**beautiful soup**)
   - Automates browsers (**Selenium**)
@@ -26,7 +26,7 @@ as alternative solution I did found a monthly historcal data from 2016 to 2021 i
   - Data Visualization (**Plotly**)
   - web apps framework (**Streamlit**)  
 
-### Data
+## Data
 
 You can find all raw data in **output** folder, and below the breack down:
   - **output/full_cities_df.csv**
@@ -68,4 +68,26 @@ You can find all raw data in **output** folder, and below the breack down:
   - **output/Grouped_City.csv & output/cities_df.csv** 
     - helper csv files for processing longitude & latitude (data pipline will be optimazed later on and the files we be no longer with us :( 
 
-### project file structure
+## project file structure
+
+
+
+## Contributing
+
+Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the GNU License. See `LICENSE` for more information.
+
+
+<!-- CONTACT -->
+## Contact
