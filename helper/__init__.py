@@ -114,3 +114,6 @@ def df_filter(message,df):
     filtered_df = df.iloc[slider_1:slider_2+1][:].reset_index(drop=True)
 
     return filtered_df
+
+def filter_rows_by_values(df, col, values):
+    return df[~df[col].isin(values)]
