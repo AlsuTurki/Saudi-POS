@@ -1,7 +1,7 @@
 """Main module for the streamlit app"""
 import streamlit as st
 from multipage import MultiPage
-from src.pages import home, about, posbycity, posbysector, aboutme
+from src.pages import home, about, posbycity, posbysector, aboutme,histposbysector
 
 # Create an instance of the app 
 app = MultiPage()
@@ -13,9 +13,9 @@ app = MultiPage()
 app.add_page("الصفحة الرئيسة", home.app)
 app.add_page("عن المشروع", about.app)
 app.add_page("نقاط البيع لكل مدينة", posbycity.app)
-app.add_page("نقاط البيع لكل قطاع",posbysector.app)
+app.add_page("نقاط البيع الاسبوعية لكل قطاع",posbysector.app)
+app.add_page("نقاط البيع الشهرية لكل قطاع",histposbysector.app)
 app.add_page("About Me",aboutme.app)
-
 
 
 

@@ -38,9 +38,9 @@ def app():
         else:
             st.error('للاسف لا يوجد بيانات كافية لهذه الفترة.')
         ## Sanity check
-        cities_df['Start Date']= pd.to_datetime(cities_df['Start Date']).dt.date
-        #greater than the start date and smaller than the end date
-        mask = (cities_df['Start Date'] > start_date) & (cities_df['Start Date'] <= end_date)
+        cities_df['Date']= pd.to_datetime(cities_df['Date']).dt.date
+        #greater than the Date and smaller than the end date
+        mask = (cities_df['Date'] > start_date) & (cities_df['Date'] <= end_date)
         cities_df = cities_df.loc[mask]
 
     except:
@@ -52,6 +52,8 @@ def app():
                         color="Value of Transactions", 
                         size="Value of Transactions", zoom=4,
                   color_continuous_scale= px.colors.sequential.Blugrn, size_max=30)
+    fig.update_layout(width=800)
+    fig.update_layout(height=550)
     st.plotly_chart(fig)
  
   
@@ -109,7 +111,7 @@ def app():
     fig_dict = dict(data=data, layout=layout)
     pio.write_html(fig_dict, file = './html_files/numoftrans_cities_df_bar.html', validate=False)
     HtmlFile = open(f'./html_files/numoftrans_cities_df_bar.html','r',encoding='utf-8')
-    components.html(HtmlFile.read(),height=600, scrolling=True)
+    components.html(HtmlFile.read(),height=600,width = 800, scrolling=True)
 
 
     # Value of Transactions by city 
@@ -162,7 +164,20 @@ def app():
     fig_dict = dict(data=data, layout=layout)
     pio.write_html(fig_dict, file = './html_files/cities_df_bar.html', validate=False)
     HtmlFile = open('./html_files/cities_df_bar.html','r',encoding='utf-8')
-    components.html(HtmlFile.read(),height=600, scrolling=True)
+    components.html(HtmlFile.read(),height=600,width = 800, scrolling=True)
+
+
+
+
+    ## Pie Chart
+
+    cities_df['Value of Transactions'] = cities_df['Value of Transactions'].replace(',','', regex=True)
+    cities_df['Value of Transactions'] = cities_df['Value of Transactions'].astype(float)
+    fig = px.pie(cities_df, values='Value of Transactions', names='Arabic_City')
+    fig.update_layout(title_text='نسبة قيمة العمليات لكل مدينة', title_x=0.5)
+    fig.write_html(file = 'html_files/cities_df_pie.html', validate=False)
+    HtmlFile = open(f'html_files/cities_df_pie.html','r',encoding='utf-8')
+    components.html(HtmlFile.read(),height=600, width = 800, scrolling=False)
 
 
     #convert_df to csv

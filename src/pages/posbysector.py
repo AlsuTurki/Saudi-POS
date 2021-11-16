@@ -23,7 +23,7 @@ def app():
     div { direction: RTL;
     .css-hi6a2p {padding-top: 0rem;}
     </style>
-    <div><h2><bdi>نقاط البيع لكل قطاع</bdi></h2></div>
+    <div><h2><bdi>نقاط البيع الاسبوعية لكل قطاع</bdi></h2></div>
     """
     st.write(title , unsafe_allow_html=True, )
 
@@ -38,9 +38,9 @@ def app():
         else:
             st.error('للاسف لا يوجد بيانات كافية لهذه الفترة.')
         ## Sanity check
-        sectors_df['Start Date']= pd.to_datetime(sectors_df['Start Date']).dt.date
-        #greater than the start date and smaller than the end date
-        mask = (sectors_df['Start Date'] > start_date) & (sectors_df['Start Date'] <= end_date)
+        sectors_df['Date']= pd.to_datetime(sectors_df['Date']).dt.date
+        #greater than the Date and smaller than the end date
+        mask = (sectors_df['Date'] > start_date) & (sectors_df['Date'] <= end_date)
         sectors_df = sectors_df.loc[mask]
     except:
         pass
@@ -48,7 +48,9 @@ def app():
 
     # Number of Transactions by city 
     sectors_df = sectors_df.sort_values('Number of Transactions')
-
+    mask = (sectors_df['Arabic_Sector'] != 'الإجمالي')
+    sectors_df = sectors_df.loc[mask]
+    
     aggs = ["count","sum","avg","median","mode","rms","stddev"]
 
     agg = []
@@ -96,7 +98,7 @@ def app():
     fig_dict = dict(data=data, layout=layout)
     pio.write_html(fig_dict, file = './html_files/numoftrans_cities_df_bar.html', validate=False)
     HtmlFile = open(f'./html_files/numoftrans_cities_df_bar.html','r',encoding='utf-8')
-    components.html(HtmlFile.read(),height=600, scrolling=True)
+    components.html(HtmlFile.read(),height=600,width = 800, scrolling=True)
 
 
     # value of transaction by sector   
@@ -147,9 +149,21 @@ def app():
     )
 
     fig_dict = dict(data=data, layout=layout)
-    pio.write_html(fig_dict, file = 'html_files/sectors_df_bar.html', validate=False)
-    HtmlFile = open(f'html_files/sectors_df_bar.html','r',encoding='utf-8')
-    components.html(HtmlFile.read(),height=600, scrolling=True)
+    pio.write_html(fig_dict, file = 'html_files/sectors_df_bar_1.html', validate=False)
+    HtmlFile = open(f'html_files/sectors_df_bar_1.html','r',encoding='utf-8')
+    components.html(HtmlFile.read(),height=600,width = 800, scrolling=True)
+
+
+    ## Pie Chart
+
+    sectors_df['Value of Transactions'] = sectors_df['Value of Transactions'].replace(',','', regex=True)
+    sectors_df['Value of Transactions'] = sectors_df['Value of Transactions'].astype(float)
+    fig = px.pie(sectors_df, values='Value of Transactions', names='Arabic_Sector')
+    fig.update_layout(title_text='نسبة قيمة العمليات لكل قطاع', title_x=0.5)
+    fig.write_html(file = 'html_files/cities_df_pie.html', validate=False)
+    HtmlFile = open(f'html_files/cities_df_pie.html','r',encoding='utf-8')
+    components.html(HtmlFile.read(),height=600, width = 800, scrolling=False)
+
 
 
 
@@ -170,6 +184,7 @@ def app():
         data=csv,
         file_name='pos-sectors-data.csv',
         mime='text/csv',)
+
 
 
 

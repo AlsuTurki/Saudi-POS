@@ -76,9 +76,9 @@ def sectors(df):
 
 
 # to intger
-def to_int(df,x):
+def to_float(df,x):
     df[x] = df[x].replace(',','', regex=True)
-    df[x] = df[x].astype(int)
+    df[x] = df[x].astype(float)
 
 
 # pars date 
