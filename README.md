@@ -4,6 +4,17 @@
 Author: Turki A. Alsughayyir
 ```
 
+- [Weekly Point Of Sales Transactions Dashboard](#weekly-point-of-sales-transactions-dashboard)
+  - [About the project](#about-the-project)
+  - [Technologies used](#technologies-used)
+  - [Data](#data)
+  - [project file structure](#project-file-structure)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [About me & Contact information](#about-me--contact-information)
+      - [My name is Turki Alsughayyir. Data guy.](#my-name-is-turki-alsughayyir-data-guy)
+
+
 ## About the project 
 This project aime to use only pyhton to collect data , visualize it and build a web app around Saudi Arabia Points of Sale Transactions Report.
 
@@ -11,6 +22,8 @@ This project aime to use only pyhton to collect data , visualize it and build a 
 Since 2016 each week SAMA are publishing a weekly POS transaction report as pdf file containing two tables:
   - Table one: Number/Value of transaction by a sector.
   - Table Two: Number/Value of transaction by city.
+
+  
 you can find the reports <a href="[url](https://www.sama.gov.sa/en-US/Indices/Pages/POS.aspx)">Here</a> 
 Unfornchaly I only found a part of 2020 weekly reports and 2021 reports strat from 12/06/2020 until current date, please feel free to edit and fix any issue in the crawler script inside the following notebook **./SaudiPointOfsalesTransaction.ipynb**  note, we have to respect the policy and agrement and not cousing any issue or distrbing while recosditing the SAMA site by passing sleep time and keep them at minimal. 
 
@@ -91,5 +104,5 @@ As a data guy I believe in setting ego aside and creating an data prodects that 
 
 Please address personal correspondence to: ``` alsuturki20@gmail.com ```
 
-Unfortunately, I am at times a lousy correspondent — where by “at times” I mean “most of the time”. If I don’t respond to your email, or do so only after an inordinate amount of time has passed you can find me in the water dodging surfers in the crowded pacific ocean trying to catch a couple of waves or on twitter [@AlsuTurki][https://twitter.com/AlsuTurki].
+Unfortunately, I am at times a lousy correspondent — where by “at times” I mean “most of the time”. If I don’t respond to your email, or do so only after an inordinate amount of time has passed you can find me in the water dodging surfers in the crowded pacific ocean trying to catch a couple of waves or on twitter [@AlsuTurki](https://twitter.com/AlsuTurki).
 
