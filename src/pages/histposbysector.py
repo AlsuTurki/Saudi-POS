@@ -9,6 +9,8 @@ import plotly.io as pio
 import plotly.express as px
 import datetime as dt
 
+
+
 def app():
     """Writes content to the app"""
     hide_menu_style = """

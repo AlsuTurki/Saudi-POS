@@ -137,6 +137,5 @@ dmypy.json
 /.idea
 .idea
 helper/__pycache__
-html_files/
 geckodriver
 .DS_Store

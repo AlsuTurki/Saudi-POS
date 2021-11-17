@@ -5,15 +5,15 @@ Author: Turki A. Alsughayyir
 ```
 
 ## About the project 
-This project aime to collect and visualize the weekly saudi Arabia Points of Sale Transactions report. Since 2016 each week Sama is publishing a weekly POS transaction report as pdf file containing two tables
+This project aime to take the full advantages of pyhton and collect/visualize Saudi Arabia Points of Sale Transactions Report. Since aug 2020 each week SAMA are publishing a weekly POS transaction report as pdf file containing two tables:
   - Table one: Number/Value of transaction by a sector.
   - Table Two: Number/Value of transaction by city.
-
+in order to start the jurny have to collect all the data form SAMA site 
 
 you can find the reports <a href="[url](https://www.sama.gov.sa/en-US/Indices/Pages/POS.aspx)">Here</a> 
-Unfornchaly we only found a part of 2020 weekly reports and 2021 reports strat from 12/06/2020 until current date, please feel free to edit and fix any issue in the crawler script inside the following notebook **./SaudiPointOfsalesTransaction.ipynb**  note, we have to respect the policy and agrement and not cousing any issue or distrbing while recosditing the SAMA site by passing sleep time and keep them at minimal. 
+Unfornchaly I only found a part of 2020 weekly reports and 2021 reports strat from 12/06/2020 until current date, please feel free to edit and fix any issue in the crawler script inside the following notebook **./SaudiPointOfsalesTransaction.ipynb**  note, we have to respect the policy and agrement and not cousing any issue or distrbing while recosditing the SAMA site by passing sleep time and keep them at minimal. 
 
-as alternative solution I did found a monthly historcal data from 2016 to 2021 in <a href="[url](https://www.sama.gov.sa/en-US/Indices/Pages/POS.aspx)">SA open data</a> as excel file, whch nedd a lot of manual prsessing, you can find it in the **output/historcal-points-of-sale-transactions.xlsx**
+as alternative solution I did found a monthly data from 2016 to 2021 in <a href="[url](https://www.sama.gov.sa/en-US/Indices/Pages/POS.aspx)">SA open data</a> as excel file, whch nedd a lot of manual prsessing, you can find it in the **output/historcal-points-of-sale-transactions.xlsx**
 
 
 
@@ -29,12 +29,12 @@ as alternative solution I did found a monthly historcal data from 2016 to 2021 i
 ## Data
 
 You can find all raw data in **output** folder, and below the breack down:
+- Generated from SAMA site using the web crawler script
   - **output/full_cities_df.csv**
     - English_City: the name of the city in english, **str type**
     - Arabic_City: the name of the city in english, **str type**
     - Start Date: the strat date of the report, **date type**
     - End Date: the end date of the report, **date type**
-    - Week Number: the week number of the year, **int type**
     - Number of Transactions: A weekly number of transaction by city, **int type**
     - Value of Transactions: A weekly value of transaction by city, **int type**  
     - location_latitude: for map ploting, in geography, latitude is a geographic coordinate that specifies the north–south position of a point on the Earth's surface, **int type**
@@ -45,29 +45,25 @@ You can find all raw data in **output** folder, and below the breack down:
     - Arabic_Sector: the name of the sector in arabic, **str type**
     - Start Date: the strat date of the report, **date type** 
     - End Date: the end date of the report, **date type**
-    - Week Number: the week number of the year, **int type**
     - Number of Transactions: A weekly number of transaction by sector, **int type**
     - Value of Transactions: A weekly value of transaction by sector, **int type** 
   
+- manualy collected from Open Date site
   - **output/historcal-points-of-sale-transactions.xlsx**
     - English_Sector: the name of the sector in english, **str type**
     - Arabic_Sector: the name of the sector in arabic, **str type**
     - Start Date: the strat date of the report, **date type** 
     - End Date: the end date of the report, **date type**
-    - Week Number: the week number of the year, **int type**
     - Number of Transactions: A weekly number of transaction by sector, **int type**
     - Value of Transactions: A weekly value of transaction by sector, **int type** 
   
-  - **output/historcal-points-of-sale-transactions.xlsx** Historical data
+  - **output/linechart_hist_bysector.csv**  data
     - English_Sector: the name of the sector in english, **str type**
     - Arabic_Sector: the name of the sector in arabic, **str type**
     - Date: the strat date of the report, **date type** 
     - Number of Transactions: A monthly number of transaction by sector, **int type**
     - Value of Transactions: A monthly value of transaction by sector, **int type** 
   
-  - **output/Grouped_City.csv & output/cities_df.csv** 
-    - helper csv files for processing longitude & latitude (data pipline will be optimazed later on and the files we be no longer with us :( 
-
 ## project file structure
 
 
@@ -83,11 +79,21 @@ Any contributions you make are **greatly appreciated**.
 5. Open a Pull Request
 
 
-<!-- LICENSE -->
 ## License
 
 Distributed under the GNU License. See `LICENSE` for more information.
 
 
-<!-- CONTACT -->
-## Contact
+## About me & Contact information
+
+#### My name is Turki Alsughayyir. Data guy.
+I'm a multi-disciplined data analyst based out of Riyadh, Saudi Arabia. My experience ranges from Big Data Quality Analyst, Data Analyst, Data Engineering, Business intelligence, and Web Development sometime.
+
+As a data guy I believe in setting ego aside and creating an data prodects that caters to the user's needs. I have a passion for an automating process, designing, and solving complex problems.
+
+
+Please address personal correspondence to:
+alsuturki20@gmail.com
+
+Unfortunately, I am at times a lousy correspondent — where by “at times” I mean “most of the time”. If I don’t respond to your email, or do so only after an inordinate amount of time has passed you can find me in the water dodging surfers in the crowded pacific ocean trying to catch a couple of waves or on twitter [ @AlsuTurki][https://twitter.com/AlsuTurki].
+

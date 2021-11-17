@@ -2,7 +2,6 @@
 import streamlit as st
 from pathlib import Path
 
-
 #about project
 
 def read_markdown_file(markdown_file):

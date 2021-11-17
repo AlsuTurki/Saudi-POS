@@ -10,6 +10,7 @@ import plotly.express as px
 import streamlit.components.v1 as components
 import datetime
 
+
 def app():
     """Writes content to the app"""
     hide_menu_style = """
@@ -24,7 +25,7 @@ def app():
     div { direction: RTL;}
     .css-hi6a2p {padding-top: 0rem;}
     </style>
-    <div><h2><bdi>نقاط البيع لكل مدينة</bdi></h2></div>
+    <div><h2><bdi>نقاط البيع الاسبوعية لكل مدينة</bdi></h2></div>
     """
     st.write(title , unsafe_allow_html=True, )
 
