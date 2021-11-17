@@ -76,6 +76,10 @@ def sectors(df):
 
 
 # to intger
+def to_int(df,x):
+    df[x] = df[x].replace(',','', regex=True)
+    df[x] = df[x].astype(int)
+
 def to_float(df,x):
     df[x] = df[x].replace(',','', regex=True)
     df[x] = df[x].astype(float)

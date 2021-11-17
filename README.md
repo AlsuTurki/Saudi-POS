@@ -8,11 +8,11 @@ Author: Turki A. Alsughayyir
   - [About the project](#about-the-project)
   - [Technologies used](#technologies-used)
   - [Data](#data)
-  - [project file structure](#project-file-structure)
+  - [Project file structure](#project-file-structure)
+  - [How to run this app](#how-to-run-this-app)
   - [Contributing](#contributing)
   - [License](#license)
   - [About me & Contact information](#about-me--contact-information)
-      - [My name is Turki Alsughayyir. Data guy.](#my-name-is-turki-alsughayyir-data-guy)
 
 
 ## About the project 
@@ -47,8 +47,7 @@ You can find all raw data in **output** folder, and below the breack down:
   - **output/full_cities_df.csv**
     - English_City: the name of the city in english, **str type**
     - Arabic_City: the name of the city in english, **str type**
-    - Start Date: the strat date of the report, **date type**
-    - End Date: the end date of the report, **date type**
+    - Date: weekly  date of the report, **date type** 
     - Number of Transactions: A weekly number of transaction by city, **int type**
     - Value of Transactions: A weekly value of transaction by city, **int type**  
     - location_latitude: for map ploting, in geography, latitude is a geographic coordinate that specifies the north–south position of a point on the Earth's surface, **int type**
@@ -57,8 +56,7 @@ You can find all raw data in **output** folder, and below the breack down:
   - **output/sectors_df.csv**
     - English_Sector: the name of the sector in english, **str type**
     - Arabic_Sector: the name of the sector in arabic, **str type**
-    - Start Date: the strat date of the report, **date type** 
-    - End Date: the end date of the report, **date type**
+    - Date: weekly  date of the report, **date type** 
     - Number of Transactions: A weekly number of transaction by sector, **int type**
     - Value of Transactions: A weekly value of transaction by sector, **int type** 
   
@@ -66,17 +64,19 @@ You can find all raw data in **output** folder, and below the breack down:
   - **output/historcal-points-of-sale-transactions.xlsx**
     - English_Sector: the name of the sector in english, **str type**
     - Arabic_Sector: the name of the sector in arabic, **str type**
-    - Start Date: the strat date of the report, **date type** 
-    - End Date: the end date of the report, **date type**
+    - Date: monthly date of the report, **date type** 
     - Number of Transactions: A weekly number of transaction by sector, **int type**
     - Value of Transactions: A weekly value of transaction by sector, **int type** 
   
   - **output/linechart_hist_bysector.csv** 
     - TODO 
   
-## project file structure
-
+## Project file structure
 TODO
+
+## How to run this app
+TODO
+
 
 ## Contributing
 
@@ -96,7 +96,7 @@ TODO
 
 ## About me & Contact information
 
-#### My name is Turki Alsughayyir. Data guy.
+**My name is Turki Alsughayyir. A data guy.**
 I'm a multi-disciplined data analyst based out of Riyadh, Saudi Arabia. My experience ranges from Big Data Quality Analyst, Data Analyst, Data Engineering, Business intelligence and and Web Development sometime.
 
 As a data guy I believe in setting ego aside and creating an data prodects that caters to the user's needs. I have a passion for an automating process, designing, and solving complex problems.
