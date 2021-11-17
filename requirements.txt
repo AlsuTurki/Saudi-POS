@@ -2,7 +2,7 @@ plotly==5.3.1
 fake_useragent==0.1.11
 numpy==1.18.1
 requests==2.22.0
-pandas==1.0.1
+pandas
 beautifulsoup4==4.10.0
 geopy==2.2.0
 helper==2.5.0
