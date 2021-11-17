@@ -5,7 +5,7 @@ from src.pages import home, about, posbycity, posbysector,histposbysector
 
 
 st.set_page_config(
-    page_title="Saudi Arabia POS Dashboard",
+    page_title="نقاط البيع السعودية",
     page_icon="src/favicon-32x32.png")    
 
 

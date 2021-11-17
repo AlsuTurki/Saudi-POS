@@ -41,9 +41,9 @@ class MultiPage:
         st.sidebar.info(
             "This an open source project and you are very welcome to **contribute** your awesome "
             "comments, questions, resources and apps as "
-            "[issues](https://github.com/AlsuTurki/SaudiPointOfSales/issues) of or "
-            "[pull requests](https://github.com/AlsuTurki/SaudiPointOfSales/pulls) "
-            "to the [source code](https://github.com/AlsuTurki/SaudiPointOfSales). ")
+            "[issues](https://github.com/AlsuTurki/Saudi-POS/issues) of or "
+            "[pull requests](https://github.com/AlsuTurki/Saudi-POS/pulls) "
+            "to the [source code](https://github.com/AlsuTurki/Saudi-POS). ")
             
         st.sidebar.info(
             """
