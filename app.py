@@ -8,7 +8,7 @@ st.set_page_config(
     page_title="Saudi Arabia POS Dashboard",
     page_icon="src/favicon-32x32.png")    
 
-    
+
 # Create an instance of the app 
 app = MultiPage()
 
@@ -17,7 +17,7 @@ app = MultiPage()
 
 # Add all your applications (pages) here
 app.add_page("الصفحة الرئيسة", home.app)
-app.add_page("عن المشروع بشكل تقني", about.app)
+app.add_page("عن المشروع تقنيا", about.app)
 app.add_page("نقاط البيع الاسبوعية لكل مدينة", posbycity.app)
 app.add_page("نقاط البيع الاسبوعية لكل قطاع",posbysector.app)
 app.add_page("نقاط البيع الشهرية لكل قطاع",histposbysector.app)
