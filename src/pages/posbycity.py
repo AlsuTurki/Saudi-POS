@@ -11,6 +11,7 @@ import streamlit.components.v1 as components
 import datetime
 
 
+
 def app():
     """Writes content to the app"""
     hide_menu_style = """
@@ -48,7 +49,7 @@ def app():
         pass
     #map 
     px.set_mapbox_access_token('pk.eyJ1IjoiYWxzdXR1cmtpIiwiYSI6ImNrdjUzOXM4cTAzZmIydnBqMWh1cms0a2MifQ.HDRkBwCGJl3wMaWzsyMtDQ')
-    fig = px.scatter_mapbox(cities_df, lat="location_latitude", lon="location_longitude",
+    fig = px.scatter_mapbox(cities_df.groupby(by=['Arabic_City', "location_latitude","location_longitude"], as_index= False)[['Value of Transactions']].sum(), lat="location_latitude", lon="location_longitude",
                         hover_name='Arabic_City',
                         color="Value of Transactions", 
                         size="Value of Transactions", zoom=4,
