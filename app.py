@@ -16,7 +16,7 @@ app = MultiPage()
 
 # Add all your applications (pages) here
 app.add_page("الصفحة الرئيسة", home.app)
-app.add_page("عن المشروع تقنيا", about.app)
+app.add_page("تقنيات المشروع", about.app)
 app.add_page("نقاط البيع الاسبوعية لكل مدينة", posbycity.app)
 app.add_page("نقاط البيع الاسبوعية لكل قطاع",posbysector.app)
 app.add_page("نقاط البيع الشهرية لكل قطاع",histposbysector.app)
