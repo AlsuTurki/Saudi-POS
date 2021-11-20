@@ -22,7 +22,7 @@ def app():
     title = """
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
     <style> bdi {font-family: 'IBM Plex Sans Arabic';}
-    div { direction: LTR;
+    div { direction: LTR; text-align: center;
     .css-hi6a2p {padding-top: 0rem;}
     </style>
     <div><h2><bdi>نقاط البيع الشهرية لكل قطاع</bdi></h2></div>
