@@ -3,12 +3,10 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 import plotly.io as pio
 import plotly.express as px
 import streamlit.components.v1 as components
-import datetime
 
 
 
@@ -23,7 +21,7 @@ def app():
     title = """
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
     <style> bdi {font-family: 'IBM Plex Sans Arabic';}
-    div { direction: RTL;}
+    div { direction: LTR;}
     .css-hi6a2p {padding-top: 0rem;}
     </style>
     <div><h2><bdi>نقاط البيع الاسبوعية لكل مدينة</bdi></h2></div>

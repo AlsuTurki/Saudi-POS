@@ -16,29 +16,28 @@ Author: Turki A. Alsughayyir
 
 
 ## About the project 
-This project aime to use only pyhton to collect data , visualize it and build a web app around Saudi Arabia Points of Sale Transactions Report.
+This project aime to use only pyhton to collect data , visualize it and build and deply a web app around Saudi Arabia Points of Sale Transactions Monthly/Weekly Reports.
 
 
-Since 2016 each week SAMA are publishing a weekly POS transaction report as pdf file containing two tables:
+Since 2016 each week/month SAMA are publishing POS transaction report in form of a pdf/xlsx file containing two tables:
   - Table one: Number/Value of transaction by a sector.
   - Table Two: Number/Value of transaction by city.
 
   
 you can find the reports <a href="[url](https://www.sama.gov.sa/en-US/Indices/Pages/POS.aspx)">Here</a> 
-Unfornchaly I only found a part of 2020 weekly reports and 2021 reports strat from 12/06/2020 until current date, please feel free to edit and fix any issue in the crawler script inside the following notebook **./SaudiPointOfsalesTransaction.ipynb**  note, we have to respect the policy and agrement and not cousing any issue or distrbing while recosditing the SAMA site by passing sleep time and keep them at minimal. 
-
-as alternative solution I did found a monthly data from 2016 to 2021 in <a href="[url](https://www.sama.gov.sa/en-US/Indices/Pages/POS.aspx)">SA open data</a> as excel file, whch needed a lot of manual prsessing, you can find it in the **output/historcal-points-of-sale-transactions.xlsx**
-
+Unfornchaly I only found a part of 2020 weekly reports and 2021 reports strat from 12/06/2020 until current date.
+as alternative solution I did found a monthly data from 2016 to 2021 in [MONTHLY STATISTICS](https://www.sama.gov.sa/ar-sa/EconomicReports/pages/monthlystatistics.aspx) as excel file.
 
 
 ## Technologies used
 - Python 3
-  - web scraping (**beautiful soup**)
-  - Automates browsers (**Selenium**)
-  - PDF Parsing (**pdfplumber**)
-  - Data processing and manipulation (**Pandas**)
-  - Data Visualization (**Plotly**)
-  - web apps framework (**Streamlit**)  
+  - web scraping ([**beautiful soup**](https://www.crummy.com/software/BeautifulSoup/bs4/doc/))
+  - Automates browsers ([**Selenium**](https://www.selenium.dev))
+  - PDF Parsing ([**pdfplumber**](https://github.com/jsvine/pdfplumber))
+  - Data processing and manipulation ([**Pandas**](https://pandas.pydata.org))
+  - Data Visualization ([**Plotly**](https://plotly.com))
+  - web apps framework ([**Streamlit**](https://streamlit.io))  
+- App hosting ([**Heroku**](https://www.heroku.com/home)) 
 
 ## Data
 
@@ -57,14 +56,6 @@ You can find all raw data in **output** folder, and below the breack down:
     - English_Sector: the name of the sector in english, **str type**
     - Arabic_Sector: the name of the sector in arabic, **str type**
     - Date: weekly  date of the report, **date type** 
-    - Number of Transactions: A weekly number of transaction by sector, **int type**
-    - Value of Transactions: A weekly value of transaction by sector, **int type** 
-  
-- manualy collected from Open Date site
-  - **output/historcal-points-of-sale-transactions.xlsx**
-    - English_Sector: the name of the sector in english, **str type**
-    - Arabic_Sector: the name of the sector in arabic, **str type**
-    - Date: monthly date of the report, **date type** 
     - Number of Transactions: A weekly number of transaction by sector, **int type**
     - Value of Transactions: A weekly value of transaction by sector, **int type** 
   

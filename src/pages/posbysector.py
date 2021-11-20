@@ -22,7 +22,7 @@ def app():
     title = """
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
     <style> bdi {font-family: 'IBM Plex Sans Arabic';}
-    div { direction: RTL;
+    div { direction: LTR;
     .css-hi6a2p {padding-top: 0rem;}
     </style>
     <div><h2><bdi>نقاط البيع الاسبوعية لكل قطاع</bdi></h2></div>
@@ -30,7 +30,6 @@ def app():
     st.write(title , unsafe_allow_html=True, )
 
     sectors_df = pd.read_csv('./output/sectors_df.csv', encoding="utf8")
-    historcal_sectors_df = pd.read_csv('./output/hist_pos.csv')
 
     # resample weekly data to monthly 
     try:

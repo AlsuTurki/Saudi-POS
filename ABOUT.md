@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
     <style> bdi {font-family: 'IBM Plex Sans Arabic';}
-    div { direction: RTL;</style>
+    div { direction: LTR;</style>
 
  <div><p><bdi>   بواسطة: تركي الصغير </bdi></p></div>
 

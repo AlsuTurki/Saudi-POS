@@ -21,7 +21,7 @@ def app():
     title = """
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
     <style> bdi {font-family: 'IBM Plex Sans Arabic';}
-    div { direction: RTL;
+    div { direction: LTR;
     .css-hi6a2p {padding-top: 0rem;}
 
     </style>
