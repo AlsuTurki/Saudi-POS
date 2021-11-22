@@ -234,8 +234,7 @@ def app():
     fig.update_layout(title_text='نسبة قيمة العمليات لكل قطاع', title_x=0.5)
     fig.update_xaxes(title_text = 'التاريخ', tickformat="%b\n%Y", ticklabelmode="period")
     fig.write_html(file = 'html_files/historcal_pie_df_3.html', validate=False)
-    HtmlFile = open(f'html_files/historcal_pie_df_3.html','r',encoding='utf-8')
-    components.html(HtmlFile.read(),height=600, width = 800, scrolling=False)
+    st.plotly_chart(fig)
 
 
 

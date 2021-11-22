@@ -180,9 +180,7 @@ def app():
     cities_df['Value of Transactions'] = cities_df['Value of Transactions'].astype(float)
     fig = px.pie(cities_df, values='Value of Transactions', names='Arabic_City')
     fig.update_layout(title_text='نسبة قيمة العمليات لكل مدينة', title_x=0.5)
-    fig.write_html(file = 'html_files/cities_df_pie.html', validate=False)
-    HtmlFile = open(f'html_files/cities_df_pie.html','r',encoding='utf-8')
-    components.html(HtmlFile.read(),height=600, width = 800, scrolling=False)
+    st.plotly_chart(fig)
 
 
     #convert_df to csv
