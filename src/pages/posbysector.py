@@ -28,8 +28,13 @@ def app():
     <div><h2><bdi>نقاط البيع الاسبوعية لكل قطاع</bdi></h2></div>
     """
     st.write(title , unsafe_allow_html=True, )
+    
+    @st.cache
+    def load_data():
+        df = pd.read_csv('./output/sectors_df.csv', encoding="utf8")
+        return df
 
-    sectors_df = pd.read_csv('./output/sectors_df.csv', encoding="utf8")
+    sectors_df = load_data()
 
     # resample weekly data to monthly 
     try:

@@ -27,8 +27,13 @@ def app():
     <div><h2><bdi>نقاط البيع الاسبوعية لكل مدينة</bdi></h2></div>
     """
     st.write(title , unsafe_allow_html=True, )
+    
+    @st.cache
+    def load_data():
+        df = pd.read_csv('./output/full_cities_df.csv', encoding="utf8")
+        return df
 
-    cities_df = pd.read_csv('./output/full_cities_df.csv', encoding="utf8")
+    cities_df = load_data()
 
     ## Range selector
     try:

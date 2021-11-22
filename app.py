@@ -1,7 +1,7 @@
 """Main module for the streamlit app"""
 import streamlit as st
 from multipage import MultiPage
-from src.pages import home, about, posbycity, posbysector,histposbysector
+from src.pages import home, about, posbycity, posbysector,histposbysector, histposbycity
 
 
 st.set_page_config(
@@ -20,6 +20,7 @@ app.add_page("تقنيات المشروع", about.app)
 app.add_page("نقاط البيع الاسبوعية لكل مدينة", posbycity.app)
 app.add_page("نقاط البيع الاسبوعية لكل قطاع",posbysector.app)
 app.add_page("نقاط البيع الشهرية لكل قطاع",histposbysector.app)
+app.add_page("نقاط البيع الشهرية لكل مدينة",histposbycity.app)
 
 
 
