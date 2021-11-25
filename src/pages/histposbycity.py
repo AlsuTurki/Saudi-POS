@@ -53,10 +53,17 @@ def app():
 
     #map 
     px.set_mapbox_access_token('pk.eyJ1IjoiYWxzdXR1cmtpIiwiYSI6ImNrdjUzOXM4cTAzZmIydnBqMWh1cms0a2MifQ.HDRkBwCGJl3wMaWzsyMtDQ')
-    fig = px.scatter_mapbox(historcal_cities_df.groupby(by=['Arabic_City', "location_latitude","location_longitude"], as_index= False)[['Value of Transactions']].sum(), lat="location_latitude", lon="location_longitude",
+    fig = px.scatter_mapbox(historcal_cities_df.groupby(by=['Arabic_City', "location_latitude","location_longitude"], as_index= False)[['Value of Transactions', 'Number of Transactions']].sum(), lat="location_latitude", lon="location_longitude",
                         hover_name='Arabic_City',
                         color="Value of Transactions", 
                         size="Value of Transactions", zoom=4,
+                        hover_data= { 
+                            'Value of Transactions':':,.0f',
+                            'Number of Transactions':':,.0f',
+                            "location_latitude": False,
+                            "location_longitude": False
+
+                        },
                     color_continuous_scale= px.colors.sequential.Blugrn, size_max=30)
     fig.update_layout(width=800)
     fig.update_layout(height=550)
@@ -64,8 +71,6 @@ def app():
 
     # Number of Transactions by city 
     historcal_cities_df = historcal_cities_df.sort_values('Number of Transactions')
-    mask = (historcal_cities_df['Arabic_City'] != 'الإجمالي')
-    historcal_cities_df = historcal_cities_df.loc[mask]
 
     aggs = ["count","sum","avg","median","mode","rms","stddev"]
 
