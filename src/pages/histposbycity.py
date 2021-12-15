@@ -23,11 +23,16 @@ def app():
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet" type="text/css"/>
     <style> bdi {font-family: 'IBM Plex Sans Arabic';}
     div { direction: LTR; text-align: center;
-    .css-hi6a2p {padding-top: 0rem;}
+    .css-hi6a2p {padding-top: 0rem;} <p dir="rtl" style="font-size:40%;" ><bdi> قيمة العمليات: ألف ريال </bdi></p>
+    <p style="font-size:40%;"><bdi>   عدد العمليات: ألف عملية </bdi></p> 
     </style>
     <div><h2><bdi>نقاط البيع الشهرية لكل قطاع</bdi></h2></div>
+
+     <p dir="rtl" style="font-size:40%;" ><bdi> قيمة العمليات: ألف ريال </bdi></p>
+    <p style="font-size:40%;"><bdi>   عدد العمليات: ألف عملية </bdi></p> 
+
     """
-    st.write(title , unsafe_allow_html=True, )
+    st.write(title , unsafe_allow_html=True)
 
     @st.cache
     def load_data():
@@ -35,6 +40,7 @@ def app():
         return df
 
     historcal_cities_df = load_data()
+
 
     # resample weekly data to monthly 
     try:
